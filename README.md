@@ -4,7 +4,9 @@ A hosted API that accepts a LinkedIn profile URL and returns structured profile 
 
 ## Live API
 
-`POST https://<deployed-url>/profile`
+`POST https://linkedin-profile-api-oy0e.onrender.com/profile`
+
+(Note: hosted on Render's free tier, which spins down after inactivity — the first request after idle time may take 30–60s to respond while the service wakes up.)
 
 ## Deployment (Render)
 
