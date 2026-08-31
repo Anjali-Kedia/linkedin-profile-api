@@ -125,14 +125,9 @@ def parse_topcard(html):
 
 
 def parse_experience(html):
-    """Returns a flat list of {title, company, dates} entries.
-
-    Handles two layouts observed in practice:
-    - grouped: Company header, total duration, then per-role "Title" / "dates"
-      pairs (multiple roles at one company, company stated once)
-    - ungrouped: per-role "Title" / "Company · Type" / "dates" triples
-      (single role per company, company restated each time)
-    """
+    # returns a flat list of {title, company, dates} — handles both the
+    # grouped (one company, several roles) and ungrouped (one role per
+    # company) layouts LinkedIn uses
     soup = BeautifulSoup(html, "html.parser")
     section = soup.find(id=re.compile(r"ExperienceDetailsSection$"))
     if section is None:
@@ -187,13 +182,6 @@ def scrape_profile(profile_url_or_id):
         "skills": None,
         "certifications": None,
         "languages": None,
-        "_known_limitations": (
-            "about, education, skills, certifications, and languages are not "
-            "available via this implementation; LinkedIn lazy-loads these "
-            "sections through a session-authenticated internal RPC mechanism "
-            "that could not be replicated with a stateless HTTP client. "
-            "See README for details."
-        ),
     }
 
 
