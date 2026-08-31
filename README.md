@@ -6,6 +6,15 @@ A hosted API that accepts a LinkedIn profile URL and returns structured profile 
 
 `POST https://<deployed-url>/profile`
 
+## Deployment (Render)
+
+1. Push this repo to GitHub.
+2. On Render, create a new **Web Service** connected to the repo.
+3. Build command: `pip install -r requirements.txt`
+4. Start command: `uvicorn main:app --host 0.0.0.0 --port $PORT` (already declared in the `Procfile`).
+5. Add `LINKEDIN_LI_AT` and `LINKEDIN_JSESSIONID` as environment variables in Render's dashboard — never in the repo.
+6. Deploy. Render provisions HTTPS automatically.
+
 ## API Documentation
 
 ### `GET /health`
